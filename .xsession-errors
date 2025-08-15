@@ -133,3 +133,36 @@ close object 3: Invalid argument
 close object 6: Invalid argument
 close object 7: Invalid argument
 Opening in existing browser session.
+close object 1: Invalid argument
+close object 3: Invalid argument
+close object 6: Invalid argument
+
+(mousepad:5555): Gtk-WARNING **: 17:43:31.180: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:43:45.818: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:43:47.530: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:43:49.584: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:43:55.432: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:43:57.201: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:44:07.973: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:44:10.805: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:44:15.793: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:44:15.976: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5555): Gtk-WARNING **: 17:44:16.137: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+Opening in existing browser session.
+
+(mousepad:5648): Gtk-WARNING **: 17:44:35.733: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5648): Gtk-WARNING **: 17:44:36.962: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:5648): Gtk-WARNING **: 17:44:38.839: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+Opening in existing browser session.

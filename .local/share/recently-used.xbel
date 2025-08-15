@@ -56,16 +56,17 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="file:///home/ms/static/index.html" added="2025-08-15T14:32:24.248516Z" modified="2025-08-15T14:32:46.106730Z" visited="2025-08-15T14:32:24.248519Z">
-    <desc>Language: ; Encoding: UTF-8; Cursor: 25:9;</desc>
+  <bookmark href="file:///home/ms/static/index.html" added="2025-08-15T14:32:24.248516Z" modified="2025-08-15T14:46:10.032417Z" visited="2025-08-15T14:32:24.248519Z">
+    <desc>Language: ; Encoding: UTF-8; Cursor: 8:41;</desc>
     <info>
       <metadata owner="http://freedesktop.org">
-        <mime:mime-type type="text/plain"/>
+        <mime:mime-type type="text/html"/>
         <bookmark:groups>
           <bookmark:group>Mousepad</bookmark:group>
         </bookmark:groups>
         <bookmark:applications>
-          <bookmark:application name="Mousepad" exec="&apos;mousepad %u&apos;" modified="2025-08-15T14:32:46.106722Z" count="2"/>
+          <bookmark:application name="Mousepad" exec="&apos;mousepad %u&apos;" modified="2025-08-15T14:46:06.500470Z" count="6"/>
+          <bookmark:application name="geany" exec="&apos;geany %u&apos;" modified="2025-08-15T14:46:10.032413Z" count="1"/>
         </bookmark:applications>
       </metadata>
     </info>

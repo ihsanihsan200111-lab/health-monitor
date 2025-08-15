@@ -1,36 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Health Dashboard</title>
-  <script>
-  async function fetchData() {
-    try {
-      const response = await fetch("/data");
-      const data = await response.json();
-
-      document.getElementById("heart").textContent = data.heart_rate;
-      document.getElementById("oxygen").textContent = data.oxygen_level;
-      document.getElementById("temp").textContent = data.temperature;
-      document.getElementById("fall").textContent = data.fall_detected ? "Yes" : "No";
-
-      if (data.gps) {
-        document.getElementById("gps").textContent =
-          data.gps.lat + ", " + data.gps.lon;
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
-
-  setInterval(fetchData, 3000);
-</script>
+  <meta charset="UTF-8">
+  <title>Live Health Monitor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap for modern UI -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Chart.js for ECG graph -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-  <h1>Live Health Monitor</h1>
-  <p>Heart Rate: <span id="heart">--</span></p>
-  <p>Oxygen Level: <span id="oxygen">--</span></p>
-  <p>Temperature: <span id="temp">--</span></p>
-  <p>Fall Detected: <span id="fall">--</span></p>
-  <p>GPS Location: <span id="gps">--</span></p>
+<body class="bg-light text-dark">
+
+  <div class="container py-5">
+    <h1 class="mb-4 text-center text-primary">Live Health Dashboard</h1>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card shadow p-3">
+          <h4>Vitals</h4>
+          <p>?? Heart Rate: <span id="heart">--</span> bpm</p>
+          <p>?? Oxygen Level: <span id="oxygen">--</span> %</p>
+          <p>??? Temperature: <span id="temp">--</span> °C</p>
+          <p>?? Fall Detected: <span id="fall">--</span></p>
+          <p>?? GPS Location: <span id="gps">--</span></p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card shadow p-3">
+          <h4>?? ECG Signal (Live)</h4>
+          <canvas id="ecgChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ecgCtx = document.getElementById('ecgChart').getContext('2d');
+
+    const ecgChart = new Chart(ecgCtx, {
+      type: 'line',
+      data: {
+        labels: Array.from({length: 50}, (_, i) => i), // x-axis 0 to 49
+        datasets: [{
+          label: 'ECG',
+          data: Array(50).fill(0),
+          borderColor: 'red',
+          borderWidth: 2,
+          fill: false,
+          tension: 0.3,
+        }]
+      },
+      options: {
+        animation: false,
+        scales: {
+          y: {
+            suggestedMin: -1,
+            suggestedMax: 1
+          }
+        }
+      }
+    });
+
+    async function fetchData() {
+      try {
+        const res = await fetch('/data');
+        const data = await res.json();
+
+        document.getElementById("heart").textContent = data.heart_rate;
+        document.getElementById("oxygen").textContent = data.oxygen_level;
+        document.getElementById("temp").textContent = data.temperature;
+        document.getElementById("fall").textContent = data.fall_detected ? "Yes" : "No";
+        document.getElementById("gps").textContent = data.gps.lat + ", " + data.gps.lon;
+
+        // Live ECG update (simulate with small random values or replace with real ECG array)
+        const ecgValue = data.ecg_value || (Math.random() * 2 - 1).toFixed(2); // simulate if missing
+        ecgChart.data.datasets[0].data.push(ecgValue);
+        ecgChart.data.datasets[0].data.shift();
+        ecgChart.update();
+
+      } catch (err) {
+        console.error("Fetch error:", err);
+      }
+    }
+
+    setInterval(fetchData, 300); // update every 300ms
+  </script>
+
 </body>
 </html>

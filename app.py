@@ -1,12 +1,20 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-from sensor_data import get_sensor_data
-import os
 
 app = Flask(__name__, static_folder='static')
 CORS(app)
 
-latest_data = get_sensor_data()
+latest_data = {
+    "heart_rate": 75,
+    "oxygen_level": 98,
+    "temperature": 36.7,
+    "fall_detected": False,
+    "gps": {
+        "lat": 37.7749,
+        "lon": -122.4194
+    },
+    "ecg_value":0.25
+}
 
 @app.route("/")
 def index():
@@ -23,5 +31,5 @@ def post_data():
     return jsonify({"status": "received"})
 
 if __name__ == "__main__":
-    print("Flask server is starting...")
+    print("?? Server running at http://localhost:5000")
     app.run(host="0.0.0.0", port=5000)
