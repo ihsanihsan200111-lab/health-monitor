@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from datetime import datetime
 
-app = Flask(name, static_folder='static')
+app = Flask(__name__, static_folder='static')
 CORS(app)
 
 # Default (fallback) data returned until real sensor data is posted
