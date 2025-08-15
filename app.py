@@ -22,5 +22,6 @@ def post_data():
     latest_data = request.json
     return jsonify({"status": "received"})
 
-if __name__ == "main":
+if __name__ == "__main__":
+    print("Flask server is starting...")
     app.run(host="0.0.0.0", port=5000)
