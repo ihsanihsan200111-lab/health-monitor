@@ -1,91 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Live Health Monitor</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap for modern UI -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Chart.js for ECG graph -->
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Chart.js for ECG -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      background-color: #f4f6f9;
+    }
+    .card {
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .title-icon {
+      margin-right: 0.5rem;
+      color: #0d6efd;
+    }
+    .value {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  </style>
 </head>
-<body class="bg-light text-dark">
-
+<body>
   <div class="container py-5">
-    <h1 class="mb-4 text-center text-primary">Live Health Dashboard</h1>
+    <h1 class="text-center mb-5 text-primary">?? Live Health Monitoring Dashboard</h1>
 
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card shadow p-3">
-          <h4>Vitals</h4>
-          <p>?? Heart Rate: <span id="heart">--</span> bpm</p>
-          <p>?? Oxygen Level: <span id="oxygen">--</span> %</p>
-          <p>??? Temperature: <span id="temp">--</span> °C</p>
-          <p>?? Fall Detected: <span id="fall">--</span></p>
-          <p>?? GPS Location: <span id="gps">--</span></p>
+    <div class="row g-4 mb-4">
+      <!-- Oximeter -->
+      <div class="col-md-4">
+        <div class="card p-4">
+          <h5><i class="fas fa-lungs title-icon"></i>Oximeter</h5>
+          <p>?? Heart Rate: <span id="heart" class="value">--</span> bpm</p>
+          <p>?? Oxygen Level: <span id="oxygen" class="value">--</span> %</p>
         </div>
       </div>
 
+      <!-- Temperature -->
+      <div class="col-md-4">
+        <div class="card p-4">
+          <h5><i class="fas fa-thermometer-half title-icon"></i>Temperature</h5>
+          <p>??? Body Temp: <span id="temp" class="value">--</span> C</p>
+        </div>
+      </div>
+
+      <!-- Fall Detection -->
+      <div class="col-md-4">
+        <div class="card p-4">
+          <h5><i class="fas fa-user-injured title-icon"></i>Fall Detection</h5>
+          <p>?? Status: <span id="fall" class="value">--</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+      <!-- GPS -->
       <div class="col-md-6">
-        <div class="card shadow p-3">
-          <h4>?? ECG Signal (Live)</h4>
-          <canvas id="ecgChart" height="200"></canvas>
+        <div class="card p-4">
+          <h5><i class="fas fa-map-marker-alt title-icon"></i>GPS Location</h5>
+          <p><strong>Coordinates:</strong> <span id="gps" class="value">--</span></p>
+          <p><strong>Place:</strong> <span id="place" class="value text-primary">Detecting...</span></p>
+        </div>
+      </div>
+
+      <!-- ECG Chart -->
+      <div class="col-md-6">
+        <div class="card p-4">
+          <h5><i class="fas fa-heartbeat title-icon"></i>ECG Signal (Live)</h5>
+          <canvas id="ecgChart" height="160"></canvas>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Live Update Script -->
   <script>
-    const ecgCtx = document.getElementById('ecgChart').getContext('2d');
+    const ecgCtx = document.getElementById("ecgChart").getContext("2d");
 
     const ecgChart = new Chart(ecgCtx, {
-      type: 'line',
+      type: "line",
       data: {
-        labels: Array.from({length: 50}, (_, i) => i), // x-axis 0 to 49
-        datasets: [{
-          label: 'ECG',
-          data: Array(50).fill(0),
-          borderColor: 'red',
-          borderWidth: 2,
-          fill: false,
-          tension: 0.3,
-        }]
+        labels: Array.from({ length: 50 }, (_, i) => i),
+        datasets: [
+          {
+            label: "ECG",
+            data: Array(50).fill(0),
+            borderColor: "crimson",
+            borderWidth: 2,
+            fill: false,
+            tension: 0.3,
+          },
+        ],
       },
       options: {
         animation: false,
+        responsive: true,
         scales: {
           y: {
             suggestedMin: -1,
-            suggestedMax: 1
-          }
-        }
-      }
+            suggestedMax: 1,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+      },
     });
 
     async function fetchData() {
       try {
-        const res = await fetch('/data');
-        const data = await res.json();
+        const response = await fetch("/data");
+        const data = await response.json();
 
+        // Update text values
         document.getElementById("heart").textContent = data.heart_rate;
         document.getElementById("oxygen").textContent = data.oxygen_level;
         document.getElementById("temp").textContent = data.temperature;
-        document.getElementById("fall").textContent = data.fall_detected ? "Yes" : "No";
-        document.getElementById("gps").textContent = data.gps.lat + ", " + data.gps.lon;
+        document.getElementById("fall").textContent = data.fall_detected ? "Detected" : "None";
 
-        // Live ECG update (simulate with small random values or replace with real ECG array)
-        const ecgValue = data.ecg_value || (Math.random() * 2 - 1).toFixed(2); // simulate if missing
+        if (data.gps) {
+          document.getElementById("gps").textContent = data.gps.lat + ", " + data.gps.lon;
+          document.getElementById("place").textContent = data.gps.place || "Unknown";
+        }
+        // Update ECG chart
+        const ecgValue = data.ecg_value ?? (Math.random() * 2 - 1).toFixed(2);
         ecgChart.data.datasets[0].data.push(ecgValue);
         ecgChart.data.datasets[0].data.shift();
         ecgChart.update();
-
-      } catch (err) {
-        console.error("Fetch error:", err);
+      } catch (error) {
+        console.error("Failed to fetch sensor data:", error);
       }
     }
 
     setInterval(fetchData, 300); // update every 300ms
   </script>
-
 </body>
 </html>

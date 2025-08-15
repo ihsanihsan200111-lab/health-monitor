@@ -71,4 +71,29 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///home/ms/send_data.py" added="2025-08-15T15:03:41.524849Z" modified="2025-08-15T15:03:41.524858Z" visited="2025-08-15T15:03:41.524850Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-python"/>
+        <bookmark:applications>
+          <bookmark:application name="geany" exec="&apos;geany %u&apos;" modified="2025-08-15T15:03:41.524854Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/ms/send_real_data.py" added="2025-08-15T15:03:54.915163Z" modified="2025-08-15T15:04:38.657760Z" visited="2025-08-15T15:03:54.915166Z">
+    <desc>Language: ; Encoding: UTF-8; Cursor: 0:0;</desc>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-python"/>
+        <bookmark:groups>
+          <bookmark:group>Mousepad</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Mousepad" exec="&apos;mousepad %u&apos;" modified="2025-08-15T15:04:35.078772Z" count="2"/>
+          <bookmark:application name="geany" exec="&apos;geany %u&apos;" modified="2025-08-15T15:04:38.657757Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>

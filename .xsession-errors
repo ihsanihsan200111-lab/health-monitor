@@ -166,3 +166,33 @@ Opening in existing browser session.
 
 (mousepad:5648): Gtk-WARNING **: 17:44:38.839: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
 Opening in existing browser session.
+[2371:2371:0815/175150.331368:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:401] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[2371:2371:0815/175150.341292:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:401] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+
+(mousepad:6342): Gtk-WARNING **: 18:04:28.613: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+
+(mousepad:6342): Gtk-WARNING **: 18:04:32.668: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
+close object 1: Invalid argument
+close object 3: Invalid argument
+close object 6: Invalid argument
+
+(geany:6518): Pango-WARNING **: 18:11:14.942: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:14.946: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:14.947: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:14.958: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:14.960: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:14.962: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:14.988: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:14.989: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:15.028: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6518): Pango-WARNING **: 18:11:15.029: Invalid UTF-8 string passed to pango_layout_set_text()
+Opening in existing browser session.

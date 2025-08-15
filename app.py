@@ -11,7 +11,8 @@ latest_data = {
     "fall_detected": False,
     "gps": {
         "lat": 37.7749,
-        "lon": -122.4194
+        "lon": -122.4194,
+        "place":"Mosul"
     },
     "ecg_value":0.25
 }
