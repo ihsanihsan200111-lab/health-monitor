@@ -49,12 +49,12 @@ def post_data():
     else:
         # If caller didn't say, keep previous; or assume sensor if payload looks real
         # You can force default here if you prefer
-        latest_meta = latest_meta or {"source": "default"}
+        latest_meta = latest_meta or {"source": "sensor are offline now"}
 
     # Merge with previous so missing fields dont erase old ones
     latest_data = {latest_data, incoming}
 
-    return jsonify({"status": "received", "fall_origin": latest_meta.get("source", "sensor are not working now")})
+    return jsonify({"status": "received", "fall_origin": latest_meta.get("source", "sensor are offline now")})
 
 if __name__ == "__main__":
     print("?? Server running at http://localhost:5000")
