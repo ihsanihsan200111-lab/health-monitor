@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Health Dashboard</title>
+  <script>
+    async function fetchData() {
+      const res = await fetch("/data"); // Same domain
+      const data = await res.json();
+      document.getElementById("heart").textContent = data.heart_rate;
+      document.getElementById("oxygen").textContent = data.oxygen_level;
+      document.getElementById("temp").textContent = data.temperature;
+      document.getElementById("fall").textContent = data.fall_detected ? "Yes" : "No";
+      document.getElementById("gps").textContent = ${data.gps.lat}, ${data.gps.lon};
+    }
+
+    setInterval(fetchData, 3000);
+  </script>
+</head>
+<body>
+  <h1>Live Health Monitor</h1>
+  <p>Heart Rate: <span id="heart">--</span></p>
+  <p>Oxygen Level: <span id="oxygen">--</span></p>
+  <p>Temperature: <span id="temp">--</span></p>
+  <p>Fall Detected: <span id="fall">--</span></p>
+  <p>GPS Location: <span id="gps">--</span></p>
+</body>
+</html>

@@ -27,16 +27,17 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="file:///home/ms/app.py" added="2025-08-15T13:21:31.763932Z" modified="2025-08-15T13:21:43.433429Z" visited="2025-08-15T13:21:31.763935Z">
+  <bookmark href="file:///home/ms/app.py" added="2025-08-15T13:21:31.763932Z" modified="2025-08-15T13:59:31.204687Z" visited="2025-08-15T13:21:31.763935Z">
     <desc>Language: ; Encoding: UTF-8; Cursor: 18:0;</desc>
     <info>
       <metadata owner="http://freedesktop.org">
-        <mime:mime-type type="text/plain"/>
+        <mime:mime-type type="text/x-python"/>
         <bookmark:groups>
           <bookmark:group>Mousepad</bookmark:group>
         </bookmark:groups>
         <bookmark:applications>
           <bookmark:application name="Mousepad" exec="&apos;mousepad %u&apos;" modified="2025-08-15T13:21:43.433425Z" count="2"/>
+          <bookmark:application name="geany" exec="&apos;geany %u&apos;" modified="2025-08-15T13:59:31.204683Z" count="1"/>
         </bookmark:applications>
       </metadata>
     </info>
