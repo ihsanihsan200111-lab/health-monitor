@@ -106,6 +106,7 @@ session = requests.Session()  # reuse TCP connection
 while True:
     try:
         data = get_real_sensor_data()
+        data["meta"] = {"source":"sensor"}
         print("Sending:", data)
         resp = session.post(API_URL, json=data, timeout=5)
         print("Status:", resp.status_code)

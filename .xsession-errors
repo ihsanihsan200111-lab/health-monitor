@@ -239,3 +239,7 @@ Opening in existing browser session.
 Opening in existing browser session.
 02:25:41.719 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
 02:25:41.720 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+02:26:32.536 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+02:26:32.536 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+02:30:41.412 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+02:30:41.412 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
