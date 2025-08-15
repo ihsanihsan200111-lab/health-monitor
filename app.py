@@ -16,7 +16,7 @@ latest_data = {
 }
 # Meta info describing where values came from
 # Expected values: {"source": "sensor"} or {"source": "default"}
-latest_meta = {"source": "default"}  # start as default
+latest_meta = {"source": "Sensor are offline now"}  # start as default
 
 @app.route("/")
 def index():
@@ -54,7 +54,7 @@ def post_data():
     # Merge with previous so missing fields dont erase old ones
     latest_data = {latest_data, incoming}
 
-    return jsonify({"status": "received", "fall_origin": latest_meta.get("source", "sensor are offline now")})
+    return jsonify({"status": "received", "fall_origin": latest_meta.get("source", "Sensor are offline now")})
 
 if __name__ == "__main__":
     print("?? Server running at http://localhost:5000")

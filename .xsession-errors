@@ -249,3 +249,6 @@ Gdk-Message: 19:11:26.814: Window 0x559917e5c0 is a temporary window without par
 (geany:8496): Gdk-CRITICAL **: 19:11:26.855: gdk_wayland_window_handle_configure_popup: assertion 'impl->transient_for' failed
 Opening in existing browser session.
 Opening in existing browser session.
+Gdk-Message: 19:19:44.713: Window 0x55b59f9ad0 is a temporary window without parent, application will not be able to position it on screen.
+
+(geany:9189): Gdk-CRITICAL **: 19:19:44.750: gdk_wayland_window_handle_configure_popup: assertion 'impl->transient_for' failed
