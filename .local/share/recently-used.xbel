@@ -96,4 +96,14 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///home/ms/sensor_data.py" added="2025-08-15T18:00:34.902738Z" modified="2025-08-15T18:00:34.903469Z" visited="2025-08-15T18:00:34.902740Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-python"/>
+        <bookmark:applications>
+          <bookmark:application name="geany" exec="&apos;geany %u&apos;" modified="2025-08-15T18:00:34.902747Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>

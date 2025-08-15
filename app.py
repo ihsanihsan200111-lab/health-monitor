@@ -52,7 +52,7 @@ def post_data():
         latest_meta = latest_meta or {"source": "sensor are offline now"}
 
     # Merge with previous so missing fields dont erase old ones
-    latest_data = {latest_data, incoming}
+    latest_data = {**latest_data, **incoming}
 
     return jsonify({"status": "received", "fall_origin": latest_meta.get("source", "Sensor are offline now")})
 

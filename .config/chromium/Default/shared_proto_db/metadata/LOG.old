@@ -1,5 +1,13 @@
-2025/08/15-16:18:35.544 7dc Recovering log #6
-2025/08/15-16:18:35.549 7dc Level-0 table #8: started
-2025/08/15-16:18:35.616 7dc Level-0 table #8: 124 bytes OK
-2025/08/15-16:18:35.809 7dc Delete type=0 #6
-2025/08/15-16:18:35.809 7dc Delete type=3 #4
+2025/08/15-20:56:51.083 7a0 Recovering log #12
+2025/08/15-20:56:51.094 7a0 Level-0 table #14: started
+2025/08/15-20:56:51.174 7a0 Level-0 table #14: 124 bytes OK
+2025/08/15-20:56:51.562 7a0 Delete type=0 #12
+2025/08/15-20:56:51.563 7a0 Delete type=3 #10
+2025/08/15-20:56:51.564 7a2 Compacting 4@0 + 0@1 files
+2025/08/15-20:56:51.728 7a2 Generated table #16@0: 17 keys, 282 bytes
+2025/08/15-20:56:51.729 7a2 Compacted 4@0 + 0@1 files => 282 bytes
+2025/08/15-20:56:51.909 7a2 compacted to: files[ 0 1 0 0 0 0 0 ]
+2025/08/15-20:56:51.910 7a2 Delete type=2 #5
+2025/08/15-20:56:51.910 7a2 Delete type=2 #14
+2025/08/15-20:56:51.910 7a2 Delete type=2 #8
+2025/08/15-20:56:51.910 7a2 Delete type=2 #11

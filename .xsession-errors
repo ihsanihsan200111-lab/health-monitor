@@ -1,4 +1,4 @@
-Xsession: X session started for ms at Fri 15 Aug 16:15:45 +03 2025
+Xsession: X session started for ms at Fri 15 Aug 21:09:00 +03 2025
 dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 xrdb: Can't open display ''
 xhost:  unable to open display ""
@@ -22,8 +22,8 @@ dbus-update-activation-environment: setting GDMSESSION=LXDE-pi-labwc
 dbus-update-activation-environment: setting NO_AT_BRIDGE=1
 dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
 dbus-update-activation-environment: setting PWD=/home/ms
-00:00:00.070 [ERROR] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
-00:00:00.071 [ERROR] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
+00:00:00.061 [ERROR] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
+00:00:00.061 [ERROR] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
 no profile matched
 pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
 Try `pgrep -f' option to match against the complete command line.
@@ -31,224 +31,17 @@ pgrep: pattern that searches for process name longer than 15 characters will res
 Try `pgrep -f' option to match against the complete command line.
 Failure: No such entity
 
-(polkit-mate-authentication-agent-1:1202): GLib-CRITICAL **: 16:15:46.600: g_variant_new_string: assertion 'string != NULL' failed
+(polkit-mate-authentication-agent-1:1208): GLib-CRITICAL **: 21:09:01.462: g_variant_new_string: assertion 'string != NULL' failed
 
-(polkit-mate-authentication-agent-1:1202): polkit-mate-1-WARNING **: 16:15:46.602: Failed to register client: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
-** Message: 16:15:48.303: batt: battery 0 not found
-** Message: 16:15:48.793: up: Checking for updates
-** Message: 16:17:09.798: up: Cache updated - comparing versions
-** Message: 16:17:16.205: up: Check complete - 203 updates available
-00:01:27.141 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-00:01:27.142 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-[1960:1960:0815/161835.855803:ERROR:components/dbus/xdg/request.cc:169] Request ended (non-user cancelled).
+(polkit-mate-authentication-agent-1:1208): polkit-mate-1-WARNING **: 21:09:01.464: Failed to register client: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
+** Message: 21:09:03.179: batt: battery 0 not found
+** Message: 21:09:03.684: up: Checking for updates
+** Message: 21:09:54.925: up: Cache updated - comparing versions
+** Message: 21:10:01.764: up: Check complete - 203 updates available
+[1919:1919:0815/211019.058176:ERROR:components/dbus/xdg/request.cc:169] Request ended (non-user cancelled).
 close object 1: Invalid argument
 close object 2: Invalid argument
 close object 3: Invalid argument
 close object 1: Invalid argument
-close object 3: Invalid argument
-close object 4: Invalid argument
-00:02:26.948 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-00:02:26.948 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-[1960:1960:0815/161928.768844:ERROR:ui/events/platform/wayland/wayland_event_watcher.cc:47] libwayland: warning: queue 0x4c00020180 destroyed while proxies still attached:
-
-[1960:1960:0815/161928.769503:ERROR:ui/events/platform/wayland/wayland_event_watcher.cc:47] libwayland:   wl_shm_pool#44 still attached
-
-00:04:18.755 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-00:04:18.755 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-[2309:2309:0815/162441.242314:ERROR:components/dbus/xdg/request.cc:169] Request ended (non-user cancelled).
-close object 1: Invalid argument
-close object 2: Invalid argument
-close object 3: Invalid argument
-close object 2: Invalid argument
 close object 4: Invalid argument
 close object 5: Invalid argument
-[2371:2395:0815/162608.894733:ERROR:ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc:89] Cannot create bo with format= YUV_420_BIPLANAR and usage=SCANOUT_CPU_READ_WRITE
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 7: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 6: Invalid argument
-close object 7: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 7: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 7: Invalid argument
-close object 8: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 6: Invalid argument
-close object 7: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 7: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 6: Invalid argument
-close object 7: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 6: Invalid argument
-close object 7: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-Fontconfig error: Cannot load default config file: No such file: (null)
-Fontconfig error: Cannot load default config file: No such file: (null)
-Fontconfig error: Cannot load default config file: No such file: (null)
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 1: Invalid argument
-close object 6: Invalid argument
-close object 7: Invalid argument
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-close object 7: Invalid argument
-Opening in existing browser session.
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-
-(mousepad:5555): Gtk-WARNING **: 17:43:31.180: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:43:45.818: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:43:47.530: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:43:49.584: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:43:55.432: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:43:57.201: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:44:07.973: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:44:10.805: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:44:15.793: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:44:15.976: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5555): Gtk-WARNING **: 17:44:16.137: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-Opening in existing browser session.
-
-(mousepad:5648): Gtk-WARNING **: 17:44:35.733: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5648): Gtk-WARNING **: 17:44:36.962: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:5648): Gtk-WARNING **: 17:44:38.839: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-Opening in existing browser session.
-[2371:2371:0815/175150.331368:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:401] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-[2371:2371:0815/175150.341292:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:401] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
-
-(mousepad:6342): Gtk-WARNING **: 18:04:28.613: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-
-(mousepad:6342): Gtk-WARNING **: 18:04:32.668: Error converting from text/plain;charset=utf-8 to UTF-8: invalid UTF-8
-close object 1: Invalid argument
-close object 3: Invalid argument
-close object 6: Invalid argument
-
-(geany:6518): Pango-WARNING **: 18:11:14.942: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:14.946: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:14.947: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:14.958: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:14.960: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:14.962: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:14.988: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:14.989: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:15.028: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6518): Pango-WARNING **: 18:11:15.029: Invalid UTF-8 string passed to pango_layout_set_text()
-Opening in existing browser session.
-
-(geany:6741): Pango-WARNING **: 18:23:32.387: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.394: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.398: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.462: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.466: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.467: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.485: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.487: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.658: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:32.661: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.016: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.017: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.018: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.034: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.035: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.037: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.063: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.064: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.092: Invalid UTF-8 string passed to pango_layout_set_text()
-
-(geany:6741): Pango-WARNING **: 18:23:43.093: Invalid UTF-8 string passed to pango_layout_set_text()
-Opening in existing browser session.
-02:25:41.719 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-02:25:41.720 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-02:26:32.536 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-02:26:32.536 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-02:30:41.412 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-02:30:41.412 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
-Opening in existing browser session.
-Gdk-Message: 19:11:26.814: Window 0x559917e5c0 is a temporary window without parent, application will not be able to position it on screen.
-
-(geany:8496): Gdk-CRITICAL **: 19:11:26.855: gdk_wayland_window_handle_configure_popup: assertion 'impl->transient_for' failed
-Opening in existing browser session.
-Opening in existing browser session.
-Gdk-Message: 19:19:44.713: Window 0x55b59f9ad0 is a temporary window without parent, application will not be able to position it on screen.
-
-(geany:9189): Gdk-CRITICAL **: 19:19:44.750: gdk_wayland_window_handle_configure_popup: assertion 'impl->transient_for' failed

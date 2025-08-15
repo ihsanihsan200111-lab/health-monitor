@@ -1,5 +1,5 @@
-2025/08/15-16:24:41.050 927 Recovering log #9
-2025/08/15-16:24:41.051 927 Level-0 table #11: started
-2025/08/15-16:24:41.063 927 Level-0 table #11: 3228 bytes OK
-2025/08/15-16:24:41.083 927 Delete type=3 #7
-2025/08/15-16:24:41.083 927 Delete type=0 #9
+2025/08/15-21:10:18.798 7ba Recovering log #15
+2025/08/15-21:10:18.805 7ba Level-0 table #18: started
+2025/08/15-21:10:18.919 7ba Level-0 table #18: 3275 bytes OK
+2025/08/15-21:10:19.033 7ba Delete type=3 #13
+2025/08/15-21:10:19.033 7ba Delete type=0 #15
