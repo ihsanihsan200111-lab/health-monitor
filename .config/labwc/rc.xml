@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc"><libinput><device category="default"><pointerSpeed>0.000000</pointerSpeed><leftHanded>no</leftHanded></device></libinput><mouse><doubleClickTime>400</doubleClickTime></mouse><keyboard><repeatRate>25</repeatRate><repeatDelay>600</repeatDelay></keyboard></openbox_config>

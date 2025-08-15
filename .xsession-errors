@@ -1,0 +1,71 @@
+Xsession: X session started for ms at Fri 15 Aug 16:15:45 +03 2025
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+xrdb: Can't open display ''
+xhost:  unable to open display ""
+dbus-update-activation-environment: setting USER=ms
+dbus-update-activation-environment: setting TEXTDOMAIN=Linux-PAM
+dbus-update-activation-environment: setting XDG_SESSION_TYPE=wayland
+dbus-update-activation-environment: setting HOME=/home/ms
+dbus-update-activation-environment: setting DESKTOP_SESSION=LXDE-pi-labwc
+dbus-update-activation-environment: setting XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting LOGNAME=ms
+dbus-update-activation-environment: setting XDG_SESSION_CLASS=user
+dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+dbus-update-activation-environment: setting XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+dbus-update-activation-environment: setting XDG_RUNTIME_DIR=/run/user/1000
+dbus-update-activation-environment: setting LANG=en_GB.UTF-8
+dbus-update-activation-environment: setting XDG_SESSION_DESKTOP=LXDE-pi-labwc
+dbus-update-activation-environment: setting XDG_GREETER_DATA_DIR=/var/lib/lightdm/data/ms
+dbus-update-activation-environment: setting SHELL=/bin/bash
+dbus-update-activation-environment: setting GDMSESSION=LXDE-pi-labwc
+dbus-update-activation-environment: setting NO_AT_BRIDGE=1
+dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+dbus-update-activation-environment: setting PWD=/home/ms
+00:00:00.070 [ERROR] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
+00:00:00.071 [ERROR] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
+no profile matched
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+Failure: No such entity
+
+(polkit-mate-authentication-agent-1:1202): GLib-CRITICAL **: 16:15:46.600: g_variant_new_string: assertion 'string != NULL' failed
+
+(polkit-mate-authentication-agent-1:1202): polkit-mate-1-WARNING **: 16:15:46.602: Failed to register client: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
+** Message: 16:15:48.303: batt: battery 0 not found
+** Message: 16:15:48.793: up: Checking for updates
+** Message: 16:17:09.798: up: Cache updated - comparing versions
+** Message: 16:17:16.205: up: Check complete - 203 updates available
+00:01:27.141 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+00:01:27.142 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+[1960:1960:0815/161835.855803:ERROR:components/dbus/xdg/request.cc:169] Request ended (non-user cancelled).
+close object 1: Invalid argument
+close object 2: Invalid argument
+close object 3: Invalid argument
+close object 1: Invalid argument
+close object 3: Invalid argument
+close object 4: Invalid argument
+00:02:26.948 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+00:02:26.948 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+[1960:1960:0815/161928.768844:ERROR:ui/events/platform/wayland/wayland_event_watcher.cc:47] libwayland: warning: queue 0x4c00020180 destroyed while proxies still attached:
+
+[1960:1960:0815/161928.769503:ERROR:ui/events/platform/wayland/wayland_event_watcher.cc:47] libwayland:   wl_shm_pool#44 still attached
+
+00:04:18.755 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+00:04:18.755 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+[2309:2309:0815/162441.242314:ERROR:components/dbus/xdg/request.cc:169] Request ended (non-user cancelled).
+close object 1: Invalid argument
+close object 2: Invalid argument
+close object 3: Invalid argument
+close object 2: Invalid argument
+close object 4: Invalid argument
+close object 5: Invalid argument
+[2371:2395:0815/162608.894733:ERROR:ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc:89] Cannot create bo with format= YUV_420_BIPLANAR and usage=SCANOUT_CPU_READ_WRITE
+close object 1: Invalid argument
+close object 3: Invalid argument
+close object 6: Invalid argument
+close object 1: Invalid argument
+close object 3: Invalid argument
+close object 7: Invalid argument
