@@ -56,6 +56,6 @@ def post_data():
 
     return jsonify({"status": "received", "fall_origin": latest_meta.get("source", "default")})
 
-if name == "main":
+if __name__ == "__main__":
     print("?? Server running at http://localhost:5000")
     app.run(host="0.0.0.0", port=5000)
