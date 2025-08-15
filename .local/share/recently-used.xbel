@@ -41,4 +41,18 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///home/ms/requirements.txt" added="2025-08-15T13:44:44.906579Z" modified="2025-08-15T13:44:57.079968Z" visited="2025-08-15T13:44:44.906581Z">
+    <desc>Language: ; Encoding: UTF-8; Cursor: 1:10;</desc>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:groups>
+          <bookmark:group>Mousepad</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Mousepad" exec="&apos;mousepad %u&apos;" modified="2025-08-15T13:44:57.079959Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>
