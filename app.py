@@ -54,7 +54,7 @@ def post_data():
     # Merge with previous so missing fields dont erase old ones
     latest_data = {latest_data, incoming}
 
-    return jsonify({"status": "received", "fall_origin": latest_meta.get("source", "default")})
+    return jsonify({"status": "received", "fall_origin": latest_meta.get("source", "sensor are not working now")})
 
 if __name__ == "__main__":
     print("?? Server running at http://localhost:5000")
