@@ -196,3 +196,46 @@ close object 6: Invalid argument
 
 (geany:6518): Pango-WARNING **: 18:11:15.029: Invalid UTF-8 string passed to pango_layout_set_text()
 Opening in existing browser session.
+
+(geany:6741): Pango-WARNING **: 18:23:32.387: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.394: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.398: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.462: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.466: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.467: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.485: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.487: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.658: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:32.661: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.016: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.017: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.018: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.034: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.035: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.037: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.063: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.064: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.092: Invalid UTF-8 string passed to pango_layout_set_text()
+
+(geany:6741): Pango-WARNING **: 18:23:43.093: Invalid UTF-8 string passed to pango_layout_set_text()
+Opening in existing browser session.
+02:25:41.719 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD
+02:25:41.720 [ERROR] [types/wlr_linux_dmabuf_v1.c:1240] Failed to get backend DRM FD

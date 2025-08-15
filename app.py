@@ -5,16 +5,16 @@ app = Flask(__name__, static_folder='static')
 CORS(app)
 
 latest_data = {
-    "heart_rate": 75,
-    "oxygen_level": 98,
-    "temperature": 36.7,
+    "heart_rate": 00,
+    "oxygen_level": 00,
+    "temperature": 00,
     "fall_detected": False,
     "gps": {
-        "lat": 37.7749,
-        "lon": -122.4194,
-        "place":"Mosul"
+        "lat": 11,
+        "lon": 11,
+        "place":"Unkown"
     },
-    "ecg_value":0.25
+    "ecg_value":1
 }
 
 @app.route("/")
