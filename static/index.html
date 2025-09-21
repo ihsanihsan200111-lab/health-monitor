@@ -103,7 +103,7 @@
   });
 
   // rolling window state
-  let FS = 600;         // will read from data.ecg.fs
+  let FS = 100;         // will read from data.ecg.fs
   let t  = 0;           // seconds
   const WIN_SEC = 6;    // visible window
   const points = ecgChart.data.datasets[0].data; // array of {x,y}
@@ -153,7 +153,7 @@
   }
 
   // poll every ~300 ms to match your POST cadence
-  setInterval(fetchData, 200);
+  setInterval(fetchData, 500);
   fetchData();
 </script>
 </body>
