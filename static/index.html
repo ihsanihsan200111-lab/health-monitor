@@ -78,190 +78,83 @@
 
   <!-- Live Update Script (ONLY uses data.ecg_value) -->
   <script>
-    // --- helpers ---
-    const setText = (id, v) => (document.getElementById(id).textContent = v);
+  // --- helpers ---
+  const setText = (id, v) => (document.getElementById(id).textContent = v);
 
-    // --- Chart.js setup ---
-    const ecgCtx = document.getElementById("ecgChart").getContext("2d");
+  // --- Chart.js: draw raw samples, no interpolation ---
+  const ecgCtx = document.getElementById("ecgChart").getContext("2d");
 
-    // Pretty gradient + subtle fill
-    const strokeGrad = ecgCtx.createLinearGradient(0, 0, 0, ecgCtx.canvas.height);
-    strokeGrad.addColorStop(0.00, "rgba(220,20,60,1)");
-    strokeGrad.addColorStop(1.00, "rgba(220,20,60,0.75)");
-    const fillGrad = ecgCtx.createLinearGradient(0, 0, 0, ecgCtx.canvas.height);
-    fillGrad.addColorStop(0.00, "rgba(220,20,60,0.12)");
-    fillGrad.addColorStop(1.00, "rgba(220,20,60,0)");
-
-    // ECG-paper style grid (minor 1mm, major 5mm)
-    const ecgGrid = {
-      id: "ecgGrid",
-      beforeDraw(chart) {
-        const { ctx, chartArea: a } = chart;
-        ctx.save();
-        ctx.clearRect(a.left, a.top, a.width, a.height);
-        // minor
-        ctx.beginPath(); ctx.strokeStyle = "rgba(255,99,132,0.08)"; ctx.lineWidth = 1;
-        for (let x = a.left; x <= a.right; x += 5) { ctx.moveTo(x, a.top); ctx.lineTo(x, a.bottom); }
-        for (let y = a.top; y <= a.bottom; y += 5) { ctx.moveTo(a.left, y); ctx.lineTo(a.right, y); }
-        ctx.stroke();
-        // major
-        ctx.beginPath(); ctx.strokeStyle = "rgba(255,99,132,0.18)"; ctx.lineWidth = 1.25;
-        for (let x = a.left; x <= a.right; x += 25) { ctx.moveTo(x, a.top); ctx.lineTo(x, a.bottom); }
-        for (let y = a.top; y <= a.bottom; y += 25) { ctx.moveTo(a.left, y); ctx.lineTo(a.right, y); }
-        ctx.stroke();
-        ctx.restore();
-      }
-    };
-
-    // Soft glow for the trace
-    const glow = {
-      id: "glow",
-      beforeDatasetsDraw(chart) {
-        const ctx = chart.ctx;
-        ctx.save();
-        ctx.shadowColor = "rgba(220,20,60,0.35)";
-        ctx.shadowBlur = 8;
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 0;
-      },
-      afterDatasetsDraw(chart) { chart.ctx.restore(); }
-    };
-
-    // Rolling window with visual interpolation (ONLY ecg_value)
-    const WIN_SEC  = 6;      // visible window in seconds
-    const VIZ_FS   = 120;    // client-side visual sampling Hz
-    const DRAW_FPS = 30;     // chart refresh rate
-    const TAU_S    = 0.12;   // smoothing time-constant (smaller = spikier)
-
-    let t = 0;               // time in seconds
-    let target = 0;          // latest ecg_value from server
-    let current = 0;         // rendered value (eases toward target)
-    let lastSampleMs = performance.now();
-    let lastDrawMs   = 0;
-
-    // Gentle auto-scale
-    let yMin = -600, yMax = 600;
-
-    const points = []; // {x, y}
-
-    function updateYScale() {
-      if (!points.length) return;
-      let lo = Infinity, hi = -Infinity;
-      for (const p of points) { if (p.y < lo) lo = p.y; if (p.y > hi) hi = p.y; }
-      const span = Math.max(60, hi - lo);
-      const pad  = Math.max(30, span * 0.25);
-      let tgtMin = Math.max(-1000, Math.floor((lo - pad) / 50) * 50);
-      let tgtMax = Math.min( 1000, Math.ceil ((hi + pad) / 50) * 50);
-      const alpha = 0.25;
-      yMin = yMin + alpha * (tgtMin - yMin);
-      yMax = yMax + alpha * (tgtMax - yMax);
-      ecgChart.options.scales.y.min = Math.round(yMin);
-      ecgChart.options.scales.y.max = Math.round(yMax);
-    }
-
-    const ecgChart = new Chart(ecgCtx, {
-      type: "line",
-      data: {
-        datasets: [{
-          data: points,
-          parsing: false,
-          borderColor: strokeGrad,
-          backgroundColor: fillGrad,
-          borderWidth: 2,
-          pointRadius: 0,            // no dots
-          fill: true,
-          spanGaps: true,
-          cubicInterpolationMode: "monotone",
-          tension: 0.25
-        }]
-      },
-      options: {
-        animation: false,
-        responsive: true,
-        maintainAspectRatio: false,   // respect .ecg-wrap height
-        plugins: { legend: { display: false } },
-        scales: {
-          x: {
-            type: "linear", min: 0, max: WIN_SEC,
-            grid: { display: false },
-            ticks: { callback: v => v.toFixed(0) + "s" }
-          },
-          y: {
-            min: yMin, max: yMax,
-            grid: { display: false }
-          }
-        }
-      },
-      plugins: [ecgGrid, glow]
-    });
-
-    function addVizSamples() {
-      const now = performance.now();
-      const need = Math.floor(((now - lastSampleMs) / 1000) * VIZ_FS);
-      if (need <= 0) return;
-
-      // exponential easing toward target
-      const alpha = 1 - Math.exp(-(need / VIZ_FS) / TAU_S);
-      for (let i = 0; i < need; i++) {
-        current += alpha * (target - current);
-        t += 1 / VIZ_FS;
-        points.push({ x: t, y: current });
-      }
-      lastSampleMs += (need / VIZ_FS) * 1000;
-
-      // trim to window
-      const oldest = t - WIN_SEC;
-      while (points.length && points[0].x < oldest) points.shift();
-
-      // slide x-range
-      ecgChart.options.scales.x.min = oldest;
-      ecgChart.options.scales.x.max = t;
-    }
-
-    function loop() {
-      addVizSamples();
-      const now = performance.now();
-      if (now - lastDrawMs >= (1000 / DRAW_FPS)) {
-        updateYScale();
-        ecgChart.update("none");
-        lastDrawMs = now;
-      }
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
-
-    // Poll ONLY ecg_value + vitals
-    async function fetchData() {
-      try {
-        const res = await fetch("/data");
-        const data = await res.json();
-
-        setText("heart", data.heart_rate ?? "--");
-        setText("oxygen", data.oxygen_level ?? "--");
-        setText("temp", data.temperature ?? "--");
-        setText("fall", data.fall_detected ? "Detected" : "None");
-        const origin = data?.meta?.source ?? "--";
-        setText("fallOrigin", origin);
-
-        if (data.gps) {
-          const lat = Number(data.gps.lat ?? 0).toFixed(5);
-          const lon = Number(data.gps.lon ?? 0).toFixed(5);
-          setText("gps", `${lat}, ${lon}`);
-          setText("place", data.gps.place || "Unknown");
-        }
-
-        // ONLY ecg_value used
-        if (typeof data.ecg_value !== "undefined") {
-          target = Number(data.ecg_value) || 0;
-        }
-      } catch (e) {
-        console.error("fetch /data failed:", e);
+  const ecgChart = new Chart(ecgCtx, {
+    type: "line",
+    data: { datasets: [{ data: [], parsing: false, borderColor: "crimson",
+                         borderWidth: 2, pointRadius: 0, fill: false, tension: 0 }] },
+    options: {
+      animation: false,
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, decimation: { enabled: false } },
+      scales: {
+        x: { type: "linear", min: 0, max: 6, grid: { color: "rgba(0,0,0,0.08)" },
+             ticks: { callback: v => v.toFixed(0) + "s" } },
+        // Set the same amplitude window you see on Arduino (adjust if needed)
+        y: { min: -300, max: 300, grid: { color: "rgba(0,0,0,0.08)" } }
       }
     }
+  });
 
-    // Match your server cadence (~300 ms)
-    setInterval(fetchData, 300);
-    fetchData();
-  </script>
+  // rolling window state
+  let FS = 400;         // will read from data.ecg.fs
+  let t  = 0;           // seconds
+  const WIN_SEC = 6;    // visible window
+  const points = ecgChart.data.datasets[0].data; // array of {x,y}
+
+  function pushSamples(samples) {
+    const n = samples.length >>> 0;
+    if (!n) return;
+    for (let i = 0; i < n; i++) {
+      t += 1 / FS;
+      points.push({ x: t, y: Number(samples[i]) });
+    }
+    // trim to rolling window
+    const oldest = t - WIN_SEC;
+    while (points.length && points[0].x < oldest) points.shift();
+    ecgChart.options.scales.x.min = oldest;
+    ecgChart.options.scales.x.max = t;
+    ecgChart.update("none");
+  }
+
+  async function fetchData() {
+    try {
+      const res = await fetch("/data");
+      const data = await res.json();
+
+      // text widgets (unchanged)
+      setText("heart", data.heart_rate ?? "--");
+      setText("oxygen", data.oxygen_level ?? "--");
+      setText("temp", data.temperature ?? "--");
+      setText("fall", data.fall_detected ? "Detected" : "None");
+      setText("fallOrigin", data?.meta?.source ?? "--");
+      if (data.gps) {
+        setText("gps", `${Number(data.gps.lat ?? 0).toFixed(5)}, ${Number(data.gps.lon ?? 0).toFixed(5)}`);
+        setText("place", data.gps.place || "Unknown");
+      }
+
+      // ---- the important part ----
+      if (data?.ecg?.fs) FS = Number(data.ecg.fs) || FS;
+      if (Array.isArray(data?.ecg?.samples) && data.ecg.samples.length) {
+        pushSamples(data.ecg.samples);        // draw raw 400 Hz samples
+      } else if (typeof data.ecg_value !== "undefined") {
+        // fallback: single sample (won't be identical to Arduino)
+        pushSamples([Number(data.ecg_value)]);
+      }
+    } catch (e) {
+      console.error("fetch /data failed:", e);
+    }
+  }
+
+  // poll every ~300 ms to match your POST cadence
+  setInterval(fetchData, 300);
+  fetchData();
+</script>
 </body>
 </html>
