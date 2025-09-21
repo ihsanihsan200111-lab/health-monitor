@@ -83,67 +83,153 @@
   </div>
 
   <!-- Live Update Script -->
-  <script>
-    const ecgCtx = document.getElementById("ecgChart").getContext("2d");
+ <script>
+  // --- UI updates for vitals ---
+  function setText(id, value) {
+    document.getElementById(id).textContent = value;
+  }
 
-    const ecgChart = new Chart(ecgCtx, {
-      type: "line",
-      data: {
-        labels: Array.from({ length: 50 }, (_, i) => i),
-        datasets: [
-          {
-            label: "ECG",
-            data: Array(50).fill(0),
-            borderColor: "crimson",
-            borderWidth: 2,
-            fill: false,
-            tension: 0.3,
-          },
-        ],
-      },
-      options: {
-        animation: false,
-        responsive: true,
-        scales: {
-          y: {
-            suggestedMin: -1,
-            suggestedMax: 1,
-          },
-        },
-        plugins: {
-          legend: {
-            display: false,
-          },
-        },
-      },
-    });
+  // --- Chart.js setup: smooth ECG line, rolling time window, glow + gradient ---
+  const ecgCtx = document.getElementById("ecgChart").getContext("2d");
 
-    async function fetchData() {
-      try {
-        const response = await fetch("/data");
-        const data = await response.json();
+  // Pretty gradient + glow shadow
+  const strokeGrad = ecgCtx.createLinearGradient(0, 0, 0, ecgCtx.canvas.height);
+  strokeGrad.addColorStop(0.00, "rgba(220,20,60,1)");   // crimson top
+  strokeGrad.addColorStop(1.00, "rgba(220,20,60,0.7)");
 
-        // Update text values
-        document.getElementById("heart").textContent = data.heart_rate;
-        document.getElementById("oxygen").textContent = data.oxygen_level;
-        document.getElementById("temp").textContent = data.temperature;
-        document.getElementById("fall").textContent = data.fall_detected ? "Detected" : "None";
-        document.getElementById("fallOrigin").textContent = data.fall_origin;
-        if (data.gps) {
-          document.getElementById("gps").textContent = data.gps.lat + ", " + data.gps.lon;
-          document.getElementById("place").textContent = data.gps.place || "Unknown";
-        }
-        // Update ECG chart
-        const ecgValue = data.ecg_value ?? (Math.random() * 2 - 1).toFixed(2);
-        ecgChart.data.datasets[0].data.push(ecgValue);
-        ecgChart.data.datasets[0].data.shift();
-        ecgChart.update();
-      } catch (error) {
-        console.error("Failed to fetch sensor data:", error);
-      }
+  const fillGrad = ecgCtx.createLinearGradient(0, 0, 0, ecgCtx.canvas.height);
+  fillGrad.addColorStop(0.00, "rgba(220,20,60,0.12)");
+  fillGrad.addColorStop(1.00, "rgba(220,20,60,0)");
+
+  const glow = {
+    id: "glow",
+    beforeDatasetsDraw(chart) {
+      const ctx = chart.ctx;
+      ctx.save();
+      ctx.shadowColor = "rgba(220,20,60,0.35)";
+      ctx.shadowBlur = 8;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+    },
+    afterDatasetsDraw(chart) {
+      chart.ctx.restore();
     }
+  };
 
-    setInterval(fetchData, 300); // update every 300ms
-  </script>
+  // Rolling window configuration
+  let FS = 100;              // will be updated from server (data.ecg.fs)
+  let t = 0;                 // seconds (x-axis)
+  let WIN_SEC = 6;           // seconds visible
+  const points = [];         // {x, y}
+
+  const ecgChart = new Chart(ecgCtx, {
+    type: "line",
+    data: {
+      datasets: [{
+        label: "ECG",
+        data: points,         // array of {x, y}
+        parsing: false,       // we provide x/y directly
+        borderColor: strokeGrad,
+        backgroundColor: fillGrad,
+        borderWidth: 2,
+        fill: true,
+        spanGaps: true,
+        cubicInterpolationMode: "monotone",
+        pointRadius: 0,       // <— no dots
+        tension: 0.25
+      }]
+    },
+    options: {
+      animation: false,
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        decimation: { enabled: true, algorithm: "lttb" } // performance safety
+      },
+      scales: {
+        x: {
+          type: "linear",
+          min: 0,
+          max: WIN_SEC,
+          grid: { color: "rgba(0,0,0,0.08)" },
+          ticks: {
+            callback: (v) => v.toFixed(0) + "s"
+          }
+        },
+        y: {
+          min: -1000,   // match your Pi-side clamp
+          max:  1000,
+          grid: { color: "rgba(0,0,0,0.08)" }
+        }
+      }
+    },
+    plugins: [glow]
+  });
+
+  function pushSamples(samples) {
+    // samples: array of numbers
+    for (let i = 0; i < samples.length; i++) {
+      t += 1 / FS;
+      points.push({ x: t, y: Number(samples[i]) });
+    }
+    // Trim to rolling window
+    const oldest = t - WIN_SEC;
+    while (points.length && points[0].x < oldest) points.shift();
+    // Update x range
+    ecgChart.options.scales.x.min = oldest;
+    ecgChart.options.scales.x.max = t;
+    ecgChart.update("none");
+  }
+
+  async function fetchData() {
+    try {
+      const response = await fetch("/data");
+      const data = await response.json();
+
+      // ----- Textual widgets -----
+      setText("heart", data.heart_rate ?? "--");
+      setText("oxygen", data.oxygen_level ?? "--");
+      setText("temp", data.temperature ?? "--");
+      setText("fall", data.fall_detected ? "Detected" : "None");
+
+      // Your backend sends sensor status in meta.source — use that instead of fall_origin
+      const origin = (data?.meta && data.meta.source) ? data.meta.source : "--";
+      setText("fallOrigin", origin);
+
+      if (data.gps) {
+        const lat = Number(data.gps.lat ?? 0).toFixed(5);
+        const lon = Number(data.gps.lon ?? 0).toFixed(5);
+        setText("gps", `${lat}, ${lon}`);
+        setText("place", data.gps.place || "Unknown");
+      }
+
+      // ----- ECG stream (smooth, continuous) -----
+      if (data?.ecg?.fs) {
+        FS = Number(data.ecg.fs) || FS;
+      }
+      let samples = [];
+      if (Array.isArray(data?.ecg?.samples) && data.ecg.samples.length) {
+        samples = data.ecg.samples;
+      } else if (typeof data.ecg_value !== "undefined") {
+        // Fallback: push one sample if chunk missing
+        samples = [Number(data.ecg_value)];
+      } else {
+        // No data — keep line steady
+        return;
+      }
+      pushSamples(samples);
+    } catch (err) {
+      console.error("Failed to fetch sensor data:", err);
+    }
+  }
+
+  // Kick off polling
+  // If your POST interval is 300ms and you send ~FS*0.3 samples each post,
+  // this matches nicely.
+  setInterval(fetchData, 300);
+  fetchData();
+</script>
+
 </body>
 </html>
