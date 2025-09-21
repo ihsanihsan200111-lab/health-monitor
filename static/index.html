@@ -97,13 +97,13 @@
         x: { type: "linear", min: 0, max: 6, grid: { color: "rgba(0,0,0,0.08)" },
              ticks: { callback: v => v.toFixed(0) + "s" } },
         // Set the same amplitude window you see on Arduino (adjust if needed)
-        y: { min: -250, max: 250, grid: { color: "rgba(0,0,0,0.08)" } }
+        y: { min: -200, max: 200, grid: { color: "rgba(0,0,0,0.08)" } }
       }
     }
   });
 
   // rolling window state
-  let FS = 400;         // will read from data.ecg.fs
+  let FS = 600;         // will read from data.ecg.fs
   let t  = 0;           // seconds
   const WIN_SEC = 6;    // visible window
   const points = ecgChart.data.datasets[0].data; // array of {x,y}
@@ -153,7 +153,7 @@
   }
 
   // poll every ~300 ms to match your POST cadence
-  setInterval(fetchData, 300);
+  setInterval(fetchData, 200);
   fetchData();
 </script>
 </body>
